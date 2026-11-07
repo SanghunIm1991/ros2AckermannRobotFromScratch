@@ -114,6 +114,7 @@
 | 4-1〜4-3 | `docs/phase4_1_lidar.md`・`docs/phase4_2_avoid.md`・`docs/phase4_3_wall_follow.md` | 未作成 |
 | 5 | `docs/phase5_slam.md` | 未作成 |
 | 6-1・6-2 | `docs/phase6_1_nav2_setup.md`・`docs/phase6_2_navigate.md` | 未作成 |
+| Tips集 | `docs/tips.md` | 未作成（本文に入れなかった補足が出てきたときに作る） |
 
 ## 6. 未決事項
 

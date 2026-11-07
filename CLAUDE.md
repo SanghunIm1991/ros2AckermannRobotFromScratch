@@ -59,7 +59,7 @@
 - **シェル**: PowerShell ツールはなく、Bash を使う。グローバルの「PowerShell ツール利用時の技術的な罠」「Windows 開発者モード」等の Windows 固有の記述は適用しない（Markdown・mermaid の表示の罠は、WSL でも使う汎用スキル `markdown-mermaid` にある）。
 - **Python**: `py` ランチャーは使えない。`python3`（3.12 系）を使う。ROS 2 の Python パッケージは apt 由来のシステムの Python に依存するため、`pip install` でシステム側へ入れない。パッケージの導入が必要な場合は venv を使い、導入前にユーザーへ確認する。
 - **環境は分けない**: 既に入っている ROS 2 Jazzy と Gazebo（親プロジェクトのために入れたもの）を共通で使う。分ける必要が出てきたら、その時点でユーザーに相談する。
-- **ROS 2・Gazebo の起動**: Claude がノード・Gazebo を起動して確かめるときは、毎回、目的と影響を説明して承認を得る。ユーザーの練習と混ざらないように、ROS 2 は `ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST` と別の `ROS_DOMAIN_ID`、Gazebo は `GZ_IP=127.0.0.1` と別の `GZ_PARTITION` を付け、Gazebo は画面なし（`gz sim -s`）で起動する。ログは `stdbuf -oL -eL` で行バッファにし、`ROS_LOG_DIR`・`HOME`・`GZ_HOMEDIR` を使い捨ての場所に向ける。止めるときは `pkill -f` を使わず、PID を確かめて止める（`gz sim` は `timeout -k 5 -s INT <秒>` の形）。詳しい確かめ方は、ドローンの教材の `dev/handoff_from_parent.md` の6-1節。
+- **ROS 2・Gazebo の起動**: Claude がノード・Gazebo を起動して確かめるときは、毎回、目的と影響を説明して承認を得る。ユーザーの練習と混ざらないように、ROS 2 は `ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST` と別の `ROS_DOMAIN_ID`、Gazebo は `GZ_IP=127.0.0.1` と別の `GZ_PARTITION` を付け、Gazebo は画面なし（`gz sim -s`）で起動する。ログは `stdbuf -oL -eL` で行バッファにし、`ROS_LOG_DIR`・`HOME`・`GZ_HOMEDIR` を使い捨ての場所に向ける。止めるときは `pkill -f` を使わず、PID を確かめて止める（`gz sim` は `timeout -k 5 -s INT <秒>` の形）。詳しい確かめ方は、ドローンの教材の `dev/handoff_from_parent.md` の5-2節（ほかのシミュレーションと分ける方法）と6-1節（確かめ方・止め方・ログの置き場所）。
 - **セキュリティ**: グローバルのセキュリティのルール（機微情報の扱い、外部送信の確認、著作権・個人情報への配慮）は環境を問わず有効。WSL から `/mnt/c` 配下の Windows 側の資格情報・ブラウザのプロファイルへアクセスしない。
 - **GUI**: WSLg のウィンドウ（Gazebo・RViz2・`rqt` 等）を Claude が起動して目視で確かめることは、グローバルの方針どおり避ける（ユーザーに依頼する）。
 
