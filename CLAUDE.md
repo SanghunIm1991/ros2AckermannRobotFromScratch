@@ -44,7 +44,7 @@
 
 - コミットは `git-conventions` スキルに従う（author・committer はユーザー本人の GitHub の noreply アドレス、接頭辞 `[claude]`、`Co-Authored-By` トレーラー）。最初のコミットの前に `user.email` が noreply であることを確かめた（2026-11-07）。
 - **`git push` は都度確認**（コミットとセットにしない）。公開範囲の変更も実行前に承認を得る。
-- リポジトリは GitHub で Public、ブランチは `main`。push＝公開なので、**最初の push の前に `public-release-review` スキルで点検し**、以後も push の前に毎回、点検の文書（作るときに `dev/` に置く）の機械点検と目視点検を行う。点検には、上の「一般化の規則」の語の一覧による点検を含める。
+- リポジトリは GitHub で Public、ブランチは `main`。push＝公開なので、**最初の push の前に `public-release-review` スキルで点検し**、以後も push の前に毎回、[`dev/public_release_review.md`](dev/public_release_review.md) の機械点検と目視点検を行い、4節の実施記録に1行を足す。点検には、上の「一般化の規則」の語の一覧による点検を含める。
 - ライセンスは、コードとコマンドが Apache-2.0、文章と図が CC BY 4.0、著作権者 `SanghunIm1991`（2026-11-07、ユーザー判断）。第三者の著作物を載せたら、`LICENSE` の3節に一覧する。
 - 公開する前提で、次を常に意識する（親プロジェクトと同じ）。
   - セキュリティ: 認証情報・API キー・個人情報・PC 固有の機微情報（ユーザー名入りの絶対パス・PC の実測値・PC の用途）を含めない。push の前に、追跡するファイルの内容と `git log` のメタデータ（author・committer の名前・email）を点検する。

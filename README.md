@@ -28,6 +28,7 @@
 | [dev/idea_origin.md](dev/idea_origin.md) | 構想（目的・ゴール・段階・技術を選んだ理由・先に確かめること） |
 | [dev/qa_log.md](dev/qa_log.md) | 判断・承認の記録 |
 | [dev/trial_notes.md](dev/trial_notes.md) | 手順書を書く前の予備の実験の記録（台車の駆動の方法の比べ方と結果） |
+| [dev/public_release_review.md](dev/public_release_review.md) | 公開前と更新のたびの点検の観点と実施記録 |
 
 ## ライセンス
 
