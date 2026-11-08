@@ -57,7 +57,7 @@ Gazebo Harmonic で、アッカーマン式の台車をどう動かすかを決�
 
 ### 2-2. 条件
 
-- 台車（この教材で決めた値。2026-11-08、ユーザー判断）: ホイールベース 0.20 m、トレッド 0.16 m、車輪の半径 0.04 m・幅 0.025 m、舵の角度の上限 0.6 rad（最小の回転半径は L/tan 0.6 ≒ 0.29 m）、本体 0.28×0.12×0.05 m・1.5 kg、車輪 0.08 kg
+- 台車（この教材で決めた値。2026-11-08、ユーザー判断）: ホイールベース 0.20 m、トレッド 0.16 m、車輪の半径 0.04 m・幅 0.025 m、舵の角度の上限 0.6 rad（左右の舵の関節それぞれの上限。先に上限に当たるのは内側の舵で、後車軸の中心の最小の回転半径は L/tan 0.6 + W/2 ≒ 0.37 m、そのときの自転車モデルの舵の角度は約 0.49 rad、外側の舵は約 0.42 rad。2026-11-08、ユーザー判断）、本体 0.28×0.12×0.05 m・1.5 kg、車輪 0.08 kg
 - URDF の根に、慣性の無いリンク `base_footprint` を置き、固定の関節で `base_link`（車軸の高さ）につないだ。Gazebo のプラグイン（舵の `JointPositionController`、後輪の `JointController`、`JointStatePublisher`、真の位置の `OdometryPublisher`）は、URDF の `<gazebo>` の中に書いた
 - 起動: 画面なしの Gazebo（空のワールド）、`robot_state_publisher`（URDF を `robot_description` で渡す）、`ros_gz_sim create`（`-topic robot_description`）、`parameter_bridge`
 - 中継: `/car/steer_left`・`/car/steer_right`・`/car/rear_left`・`/car/rear_right` を `std_msgs/msg/Float64` → `gz.msgs.Double`（ROS 2 から Gazebo へ）、`/car/joint_states` を `gz.msgs.Model` → `sensor_msgs/msg/JointState`（Gazebo から ROS 2 へ）、`/clock`
