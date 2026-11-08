@@ -45,6 +45,39 @@ Gazebo Harmonic で、アッカーマン式の台車をどう動かすかを決�
 
 ### 1-5. まだ確かめていないこと
 
-- B を ROS 2 からつなぐ部分: `ros_gz_bridge` で、`std_msgs/msg/Float64` の指令を舵と後輪の関節へ中継し、関節の状態（`gz.msgs.Model`）を `sensor_msgs/msg/JointState` として ROS 2 に出す。フェーズ1-2を書く前に確かめる。
-- URDF から Gazebo に出したときに、B の関節の制御のプラグインが同じように働くか（今回の A・B は SDF で直接書いた）。
-- 舵の制御の係数の決め方と、舵が指令の角度に達するまでの時間（学習計画のフェーズ1-2の完了条件の案は「1秒以内に誤差0.01 rad 以内」）。
+- ~~B を ROS 2 からつなぐ部分~~ → 2節で確かめた（2026-11-08）。
+- ~~URDF から Gazebo に出したときに、B の関節の制御のプラグインが同じように働くか~~ → 2節で確かめた（2026-11-08）。
+- 舵が指令の角度に達するまでの時間（学習計画のフェーズ1-2の完了条件の案は「1秒以内に誤差0.01 rad 以内」）。2節の設定で、フェーズ1-2を書くときに測る。
+
+## 2. 方式 B を URDF と ROS 2 からつなぐ（2026-11-08）
+
+### 2-1. 目的
+
+1節で決めた方式 B を、手順書と同じ形（URDF で書いた台車を Gazebo に出し、ROS 2 のトピックで指令を送る）で動かし、フェーズ1-2を書く前に、つなぎ方と設定を確かめる。
+
+### 2-2. 条件
+
+- 台車（この教材で決めた値。2026-11-08、ユーザー判断）: ホイールベース 0.20 m、トレッド 0.16 m、車輪の半径 0.04 m・幅 0.025 m、舵の角度の上限 0.6 rad（最小の回転半径は L/tan 0.6 ≒ 0.29 m）、本体 0.28×0.12×0.05 m・1.5 kg、車輪 0.08 kg
+- URDF の根に、慣性の無いリンク `base_footprint` を置き、固定の関節で `base_link`（車軸の高さ）につないだ。Gazebo のプラグイン（舵の `JointPositionController`、後輪の `JointController`、`JointStatePublisher`、真の位置の `OdometryPublisher`）は、URDF の `<gazebo>` の中に書いた
+- 起動: 画面なしの Gazebo（空のワールド）、`robot_state_publisher`（URDF を `robot_description` で渡す）、`ros_gz_sim create`（`-topic robot_description`）、`parameter_bridge`
+- 中継: `/car/steer_left`・`/car/steer_right`・`/car/rear_left`・`/car/rear_right` を `std_msgs/msg/Float64` → `gz.msgs.Double`（ROS 2 から Gazebo へ）、`/car/joint_states` を `gz.msgs.Model` → `sensor_msgs/msg/JointState`（Gazebo から ROS 2 へ）、`/clock`
+- 指令: `v`＝0.3 m/s、`ω`＝0.6 rad/s（回転半径の理論値 0.5 m）。運動学で計算した舵の角度（内側 0.4444 rad・外側 0.3321 rad）と後輪の回転の速さ（6.3・8.7 rad/s）を、`ros2 topic pub -r 5` で送った
+
+### 2-3. 結果
+
+| 舵の制御の設定 | 舵の角度（左・右） | 円の半径（理論値 0.5 m） | 向きの速さ |
+|---|---|---|---|
+| 力の指令（`p_gain` 5・`d_gain` 0.1。1節と同じ） | 0.411・0.300 rad（指令より約 0.03 rad 足りない） | 0.524 m（4.8%） | 0.584 rad/s |
+| 速さの指令（`use_velocity_commands` true・`p_gain` 10） | 0.4444・0.3321 rad（指令どおり） | 0.510 m（1.9%） | 0.600 rad/s |
+
+- **中継**: 4つの指令は ROS 2 から関節に届き、後輪は指令どおりの速さで回った。`/car/joint_states` は、ROS 2 の側で6つの関節（舵2・前輪2・後輪2）の位置と速さとして受け取れた。前輪（回る関節だけで、駆動していない）は、内側 6.97 rad/s・外側 8.80 rad/s で回った（理論値は約 7.0・9.2 rad/s。外側は少し滑っている）。
+- **舵の制御**: 力の指令では、舵の関節の速さが URDF の速さの上限（10 rad/s）に張り付き、角度も届かなかった（小さな慣性の舵のリンクを、力で安定させきれていない）。速さの指令に変えると、角度が指令どおりになった。手順書では、速さの指令の設定を使う。
+- **`robot_state_publisher` の警告**: 根を慣性の無い `base_footprint` にしたので、1節の C で出た KDL の警告は出なかった。
+- **つまずきやすい点の候補**:
+  - `ros2 topic pub` を起動してから指令が届くまで、約3秒かかった（その間、台車は止まっている）。
+  - `ros2 topic echo --no-daemon` で型を渡さずに起動すると、相手を見つける前に型を調べて「トピックが出ていない」と失敗した。型（`sensor_msgs/msg/JointState`）を渡すと受け取れた。
+
+### 2-4. 決めたこと
+
+- 台車の寸法は、2-2節の値にする（2026-11-08、ユーザー判断）。
+- 舵は `JointPositionController` の速さの指令（`use_velocity_commands`）で動かす（Claude 判断。手順書を書くときに、達するまでの時間を測って確かめる）。
