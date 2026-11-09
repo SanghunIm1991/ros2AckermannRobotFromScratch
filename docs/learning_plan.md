@@ -106,7 +106,7 @@
 
 | フェーズ | 手順書 | 状態 |
 |---|---|---|
-| 0 | `docs/phase0_overview.md` | 未作成 |
+| 0 | [`docs/phase0_overview.md`](phase0_overview.md) | 作成済み（2026-11-09） |
 | 環境構築 | `docs/setup_ros2_gazebo.md` | 未作成 |
 | 1-1・1-2 | `docs/phase1_1_urdf.md`・`docs/phase1_2_gazebo.md` | 未作成 |
 | 2-1・2-2 | `docs/phase2_1_kinematics.md`・`docs/phase2_2_drive_node.md` | 未作成 |
