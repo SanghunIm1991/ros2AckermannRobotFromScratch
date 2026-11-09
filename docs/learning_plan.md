@@ -50,7 +50,7 @@
 ### フェーズ1: URDF の台車
 
 - **内容**: 1-1で、台車の本体・後の2輪（回る関節）・前の2輪（舵を切る関節と回る関節）を URDF（xacro）で書き、`robot_state_publisher` と RViz2 で形と TF の木を見る。1-2で、慣性と衝突の形を足して Gazebo に出し、関節を個別に動かすプラグイン（舵は角度を指令する `JointPositionController` を、関節を速さで動かす設定（`use_velocity_commands`）で使い、後輪は速さの指令の `JointController`）を付けて、`ros_gz_bridge` で ROS 2 から指令を送り、舵と車輪が指令どおりに動くことを確かめる（駆動の方法は、予備の実験で決めた。2026-11-08）。寸法は、この教材で決めた値を使う。
-- **前提**: 環境構築、フェーズ0。親プロジェクトのフェーズ2（ワークスペースとパッケージ）のうち、使う節（手順書を作るときに決める）。
+- **前提**: 環境構築、フェーズ0。親プロジェクトのフェーズ2（ワークスペースとパッケージ）の2-1・2-2・2-4・2-5節と、フェーズ4（launch）の4-1節（1-1で決めた。1-2で足す節は、1-2を作るときに決める）。
 - **完了条件（案）**: 1-1は、`check_urdf` が通り、`tf2_echo` で見た前輪の位置が、決めたホイールベースとトレッドの半分に一致する（1 mm 以内）。1-2は、Gazebo の中で台車が倒れずに静止し、舵の関節に与えた角度に、1秒以内に誤差0.01 rad 以内で達する。
 
 ### フェーズ2: アッカーマンの運動学
@@ -108,7 +108,7 @@
 |---|---|---|
 | 0 | [`docs/phase0_overview.md`](phase0_overview.md) | 作成済み（2026-11-09） |
 | 環境構築 | `docs/setup_ros2_gazebo.md` | 未作成 |
-| 1-1・1-2 | `docs/phase1_1_urdf.md`・`docs/phase1_2_gazebo.md` | 未作成 |
+| 1-1・1-2 | [`docs/phase1_1_urdf.md`](phase1_1_urdf.md)・`docs/phase1_2_gazebo.md` | 1-1は作成済み（2026-11-09）。1-2は未作成 |
 | 2-1・2-2 | `docs/phase2_1_kinematics.md`・`docs/phase2_2_drive_node.md` | 未作成 |
 | 3 | `docs/phase3_odometry.md` | 未作成 |
 | 4-1〜4-3 | `docs/phase4_1_lidar.md`・`docs/phase4_2_avoid.md`・`docs/phase4_3_wall_follow.md` | 未作成 |

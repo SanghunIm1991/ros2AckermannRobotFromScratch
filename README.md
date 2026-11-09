@@ -11,6 +11,7 @@
 | 順番 | 手順書 | 内容 | 前提 |
 |---|---|---|---|
 | 1 | [フェーズ0](docs/phase0_overview.md) | アッカーマン式の台車と、自律の移動の全体の構成（読み物） | なし |
+| 2 | [フェーズ1-1](docs/phase1_1_urdf.md) | URDF で台車の形と関節を書き、RViz2 で見る | フェーズ0（環境構築の手順書は作成中。ROS 2 Jazzy が入っていればよい）。親プロジェクトの [フェーズ2](https://github.com/SanghunIm1991/ros2MinimalPhysicalAi/blob/main/docs/phase2_packages.md) の2-1・2-2・2-4・2-5節と [フェーズ4](https://github.com/SanghunIm1991/ros2MinimalPhysicalAi/blob/main/docs/phase4_launch.md) の4-1節 |
 
 各手順書では、コマンドを実行する手順の直後に「期待する結果」として、表示の例と、その読み方を載せます。実行の環境を用意せずに、読み物として読むこともできます。表示の出どころ（実際に確かめた表示か、仕様から想定した表示か）は、各手順書の冒頭に書きます。時刻・版の数字・パスなど、環境や実行ごとに変わる部分は、その旨を書きます。
 

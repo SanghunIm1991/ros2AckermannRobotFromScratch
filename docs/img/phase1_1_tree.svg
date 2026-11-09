@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1390 660" width="1390" height="660" font-family="'Noto Sans CJK JP','Noto Sans JP','Hiragino Sans','Yu Gothic',Meiryo,sans-serif" font-size="14" role="img" aria-label="台車のリンクと関節の木（TF の木）。根は地面の上の base_footprint で、固定の関節 base_joint で、後車軸の中心にある base_link（z が 0.04 m 上）につながる。base_link には、舵を切る関節（revolute）で front_left_steer_link（x 0.20・y 0.08）と front_right_steer_link（x 0.20・y −0.08）が、回る関節（continuous）で rear_left_wheel（x 0・y 0.08）と rear_right_wheel（x 0・y −0.08）がつながる。2つの舵の部品には、回る関節（continuous）で front_left_wheel と front_right_wheel がつながる。位置は、親のリンクから見た関節の位置">
+<title>台車のリンクと関節の木（TF の木）。根は地面の上の base_footprint で、固定の関節 base_joint で、後車軸の中心にある base_link（z が 0.04 m 上）につながる。base_link には、舵を切る関節（revolute）で front_left_steer_link（x 0.20・y 0.08）と front_right_steer_link（x 0.20・y −0.08）が、回る関節（continuous）で rear_left_wheel（x 0・y 0.08）と rear_right_wheel（x 0・y −0.08）がつながる。2つの舵の部品には、回る関節（continuous）で front_left_wheel と front_right_wheel がつながる。位置は、親のリンクから見た関節の位置</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#333333"/></marker></defs>
+<rect x="0" y="0" width="1390" height="660" fill="#ffffff"/>
+<g fill="#1a1a1a">
+<path d="M135,130 L135,190" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M135,300 L135,360" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M455,300 L455,360" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M775,300 L775,360" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M1095,300 L1095,360" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M135,470 L135,530" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M455,470 L455,530" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="20" width="1190" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<rect x="20" y="190" width="1190" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<rect x="20" y="360" width="230" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<rect x="340" y="360" width="230" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<rect x="660" y="360" width="230" height="110" rx="8" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<rect x="980" y="360" width="230" height="110" rx="8" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<rect x="20" y="530" width="230" height="110" rx="8" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<rect x="340" y="530" width="230" height="110" rx="8" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<text x="615" y="69" text-anchor="middle" font-weight="bold">base_footprint</text>
+<text x="615" y="89" text-anchor="middle">地面の上の、base_link の真下の点</text>
+<text x="615" y="239" text-anchor="middle" font-weight="bold">base_link</text>
+<text x="615" y="259" text-anchor="middle">台車の基準。原点は後車軸の中心（地面から 0.04 m 上）</text>
+<text x="135" y="399" text-anchor="middle" font-weight="bold">front_left_steer_link</text>
+<text x="135" y="419" text-anchor="middle">左前の舵を切る部品</text>
+<text x="135" y="439" text-anchor="middle">x 0.20・y 0.08</text>
+<text x="455" y="399" text-anchor="middle" font-weight="bold">front_right_steer_link</text>
+<text x="455" y="419" text-anchor="middle">右前の舵を切る部品</text>
+<text x="455" y="439" text-anchor="middle">x 0.20・y −0.08</text>
+<text x="775" y="399" text-anchor="middle" font-weight="bold">rear_left_wheel</text>
+<text x="775" y="419" text-anchor="middle">左の後輪</text>
+<text x="775" y="439" text-anchor="middle">x 0・y 0.08</text>
+<text x="1095" y="399" text-anchor="middle" font-weight="bold">rear_right_wheel</text>
+<text x="1095" y="419" text-anchor="middle">右の後輪</text>
+<text x="1095" y="439" text-anchor="middle">x 0・y −0.08</text>
+<text x="135" y="569" text-anchor="middle" font-weight="bold">front_left_wheel</text>
+<text x="135" y="589" text-anchor="middle">左の前輪</text>
+<text x="135" y="609" text-anchor="middle">舵の部品と同じ位置</text>
+<text x="455" y="569" text-anchor="middle" font-weight="bold">front_right_wheel</text>
+<text x="455" y="589" text-anchor="middle">右の前輪</text>
+<text x="455" y="609" text-anchor="middle">舵の部品と同じ位置</text>
+<text x="143" y="165" text-anchor="start" font-size="13">base_joint（fixed）・z 0.04</text>
+<text x="143" y="335" text-anchor="start" font-size="13">front_left_steer_joint（revolute）</text>
+<text x="463" y="335" text-anchor="start" font-size="13">front_right_steer_joint（revolute）</text>
+<text x="783" y="335" text-anchor="start" font-size="13">rear_left_wheel_joint（continuous）</text>
+<text x="1103" y="335" text-anchor="start" font-size="13">rear_right_wheel_joint（continuous）</text>
+<text x="143" y="505" text-anchor="start" font-size="13">front_left_wheel_joint（continuous）</text>
+<text x="463" y="505" text-anchor="start" font-size="13">front_right_wheel_joint（continuous）</text>
+<rect x="660" y="547" width="20" height="14" rx="3" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<text x="688" y="560">本体と舵の部品</text>
+<rect x="660" y="577" width="20" height="14" rx="3" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<text x="688" y="590">車輪</text>
+<rect x="660" y="607" width="20" height="14" rx="3" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<text x="688" y="620">木の根</text>
+</g></svg>
