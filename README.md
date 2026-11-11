@@ -13,6 +13,7 @@
 | 1 | [フェーズ0](docs/phase0_overview.md) | アッカーマン式の台車と、自律の移動の全体の構成（読み物） | なし |
 | 2 | [フェーズ1-1](docs/phase1_1_urdf.md) | URDF で台車の形と関節を書き、RViz2 で見る | フェーズ0（環境構築の手順書は作成中。ROS 2 Jazzy が入っていればよい）。親プロジェクトの [フェーズ2](https://github.com/SanghunIm1991/ros2MinimalPhysicalAi/blob/main/docs/phase2_packages.md) の2-1・2-2・2-4・2-5節と [フェーズ4](https://github.com/SanghunIm1991/ros2MinimalPhysicalAi/blob/main/docs/phase4_launch.md) の4-1節 |
 | 3 | [フェーズ1-2](docs/phase1_2_gazebo.md) | 台車を Gazebo に出し、ROS 2 から舵と後輪の関節を動かす | フェーズ1-1（環境構築の手順書は作成中。Gazebo Harmonic と `ros-jazzy-ros-gz` が入っていればよい）。親プロジェクトの節はフェーズ1-1と同じ |
+| 4 | [フェーズ2-1](docs/phase2_1_kinematics.md) | `v`・`ω` から左右の舵の角度と後輪の速さを求めるクラスを書き、ROS 2 を使わずに確かめる | フェーズ0の2節、フェーズ1-2。親プロジェクトの [フェーズ2](https://github.com/SanghunIm1991/ros2MinimalPhysicalAi/blob/main/docs/phase2_packages.md) の2-1・2-2・2-4・2-5節 |
 
 各手順書では、コマンドを実行する手順の直後に「期待する結果」として、表示の例と、その読み方を載せます。実行の環境を用意せずに、読み物として読むこともできます。表示の出どころ（実際に確かめた表示か、仕様から想定した表示か）は、各手順書の冒頭に書きます。時刻・版の数字・パスなど、環境や実行ごとに変わる部分は、その旨を書きます。
 
@@ -22,7 +23,7 @@
 
 | ターミナル | 動かすもの | 使う手順書 |
 |---|---|---|
-| T1 | シミュレーション（`ros2 launch ackermann_gazebo sim.launch.py`。Gazebo・台車・中継） | フェーズ1-2以降のすべて（フェーズ1-1では、RViz2 で見るための launch に使う） |
+| T1 | シミュレーション（`ros2 launch ackermann_gazebo sim.launch.py`。Gazebo・台車・中継） | フェーズ1-2以降の、シミュレーションを使う手順書（フェーズ1-1では、RViz2 で見るための launch に使う。フェーズ2-1はシミュレーションを使わない） |
 | T2 以降 | その手順書の作業 | 各手順書のとおり |
 
 ## 参考にしたもの
