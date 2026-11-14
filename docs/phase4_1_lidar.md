@@ -9,7 +9,7 @@
 
 > **このページの位置づけ**: このページでは、台車を止めたまま、LiDAR の値を読む。値を使って台車を動かす（障害物の手前で止まる・避ける）のは、フェーズ4-2である。このページで `sim.launch.py` を直すと、T1 で開くワールドが、空のワールドから部屋のワールドに変わる。フェーズ1-2〜3-1の手順は、部屋の中でも、そのまま進められる（6-5節）。
 >
-> **期待する結果の出どころ**: 4-4節の `xacro`・`check_urdf`・`gz sdf` の表示、5-4節の `colcon build`・`ros2 launch --show-args`・`ros2 pkg executables` の表示、6節の launch のログ・`ros2 topic`・`tf2_echo`・ノードのログの表示と、6-5節の円の半径は、作成時に使い捨てのワークスペースで実際に実行して確かめたものである（Gazebo は、画面なしで起動した。launch の引数 `gz_args:='-r -s'`）。時刻・秒数・パス・ユーザー名・ノイズで揺れる距離の小数点以下3桁目は、実行ごと・環境ごとに変わる。画面なしの起動でも LiDAR の値が出ることは、作成時の予備の実験で確かめた。6-1節の Gazebo の画面と、6-4節の RViz2 の画面の見え方は、作成時には開いて確かめておらず、設定とツールの振る舞いから想定したものである。8節のうち、`Non-unique names` のエラーは、作成時の下書きで起きたものである。8節のほかの誤りのときの表示は、作成時には起こしておらず、ツールの振る舞いから想定した要旨である。
+> **期待する結果の出どころ**: 4-4節の `xacro`・`check_urdf`・`gz sdf` の表示、5-4節の `colcon build`・`ros2 launch --show-args`・`ros2 pkg executables` の表示、6節の launch のログ・`ros2 topic`・`tf2_echo`・ノードのログの表示と、6-5節の円の半径は、作成時に使い捨てのワークスペースで実際に実行して確かめたものである（Gazebo は、画面なしで起動した。launch の引数 `gz_args:='-r -s'`）。時刻・秒数・パス・ユーザー名・ノイズで揺れる距離の小数点以下3桁目は、実行ごと・環境ごとに変わる。画面なしの起動でも LiDAR の値が出ることは、作成時の予備の実験で確かめた。5-3節の、`gz_args` にワールドの名前を書いたときに部屋のワールドが開くことと、6-5節・8節の、`world:=empty.sdf` で起動すると `/scan` の値が届かないことも、作成時に起動して確かめた。6-1節の Gazebo の画面と、6-4節の RViz2 の画面の見え方は、作成時には開いて確かめておらず、設定とツールの振る舞いから想定したものである。8節のうち、`Non-unique names` のエラーは、作成時の下書きで起きたものである。8節のほかの誤りのときの表示は、作成時には起こしておらず、ツールの振る舞いから想定した要旨である。
 
 ## 0. 学習目標と完了条件
 
@@ -755,11 +755,12 @@ rviz2 --ros-args -p use_sim_time:=true
 
 ## 出典
 
-このページの技術的な記述は、次の文書を読んで、自分の言葉でまとめたもの（逐語の転載ではない）。サンプルの模型・ワールド・設定・コードは、この教材で書いたもの。
+このページの技術的な記述は、次の文書を読んで、自分の言葉でまとめたもの（逐語の転載ではない）。サンプルの模型・ワールド・設定・コードは、この教材で書いたもの（ワールドの一部の既定値は、下の注記のとおり）。
 
 - Gazebo のセンサの付け方（`Sensors` のシステム、`gpu_lidar` の要素、描画エンジン）: [Sensors — Gazebo Harmonic](https://gazebosim.org/docs/harmonic/sensors/)
 - `<sensor>` の要素の仕様: [SDFormat の仕様（1.9）の `sensor`](http://sdformat.org/spec?ver=1.9&elem=sensor)
 - メッセージの型: [`sensor_msgs/msg/LaserScan`](https://github.com/ros2/common_interfaces/blob/jazzy/sensor_msgs/msg/LaserScan.msg)
 - QoS の考え方: [About Quality of Service settings（ROS 2 Jazzy）](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html)。`qos_profile_sensor_data` の中身は、[`rmw` の `qos_profiles.h`（`jazzy` ブランチ）](https://github.com/ros2/rmw/blob/jazzy/rmw/include/rmw/qos_profiles.h) の `rmw_qos_profile_sensor_data`
 - 中継: [ros_gz のリポジトリ（`jazzy` ブランチ）](https://github.com/gazebosim/ros_gz/tree/jazzy)（`ros_gz_bridge` の README）
+- 部屋のワールド（5-1節）のうち、物理の設定・最初の3つのシステム・光・地面の書き方は、Gazebo に付属する `empty.sdf`（[gz-sim](https://github.com/gazebosim/gz-sim/blob/gz-sim8/examples/worlds/empty.sdf)、Apache-2.0）の既定値に合わせた。壁と `Sensors` のシステムは、この教材で書いたもの
 - 図（`img/phase4_1_flow.svg`）は、この教材で作ったもの。
