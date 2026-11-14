@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1230 380" width="1230" height="380" font-family="'Noto Sans CJK JP','Noto Sans JP','Hiragino Sans','Yu Gothic',Meiryo,sans-serif" font-size="14" role="img" aria-label="フェーズ3-1で動かすものと、トピックの流れ。T1 の Gazebo の中で、台車はフェーズ2-2の駆動のノード（T2）の指令で走る。Gazebo は、関節の状態（/joint_states）と台車の真の位置（/ground_truth/odom）を出し、T1 の ros_gz_bridge が ROS 2 へ中継する。T3 の ackermann_odometry は、/joint_states の後輪の回転の速さと舵の角度から位置と向きを積算し、/odom と、TF の odom → base_footprint を出す。T4 の odom_error は、/odom と /ground_truth/odom を受け、走った距離と位置の差を表示する。T5 の tf2_echo（または RViz2）は、TF の odom から base_link までを見る">
+<title>フェーズ3-1で動かすものと、トピックの流れ。T1 の Gazebo の中で、台車はフェーズ2-2の駆動のノード（T2）の指令で走る。Gazebo は、関節の状態（/joint_states）と台車の真の位置（/ground_truth/odom）を出し、T1 の ros_gz_bridge が ROS 2 へ中継する。T3 の ackermann_odometry は、/joint_states の後輪の回転の速さと舵の角度から位置と向きを積算し、/odom と、TF の odom → base_footprint を出す。T4 の odom_error は、/odom と /ground_truth/odom を受け、走った距離と位置の差を表示する。T5 の tf2_echo（または RViz2）は、TF の odom から base_link までを見る</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#333333"/></marker></defs>
+<rect x="0" y="0" width="1230" height="380" fill="#ffffff"/>
+<g fill="#1a1a1a">
+<path d="M290,75 L480,75" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M750,75 L940,75" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M550,130 L550,250" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M1010,130 L1010,200 L680,200 L680,250" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M1150,130 L1150,250" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="20" width="270" height="110" rx="8" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<rect x="480" y="20" width="270" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<rect x="940" y="20" width="270" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<rect x="480" y="250" width="270" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<rect x="940" y="250" width="270" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<text x="155" y="59" text-anchor="middle" font-weight="bold">Gazebo（T1）</text>
+<text x="155" y="79" text-anchor="middle">台車が走り、関節の状態と</text>
+<text x="155" y="99" text-anchor="middle">真の位置を出す</text>
+<text x="615" y="59" text-anchor="middle" font-weight="bold">ros_gz_bridge（T1）</text>
+<text x="615" y="79" text-anchor="middle">Gazebo と ROS 2 の間で</text>
+<text x="615" y="99" text-anchor="middle">トピックを中継する</text>
+<text x="1075" y="59" text-anchor="middle" font-weight="bold">ackermann_odometry（T3）</text>
+<text x="1075" y="79" text-anchor="middle">関節の状態から</text>
+<text x="1075" y="99" text-anchor="middle">位置と向きを積算する</text>
+<text x="615" y="289" text-anchor="middle" font-weight="bold">odom_error（T4）</text>
+<text x="615" y="309" text-anchor="middle">走った距離と、</text>
+<text x="615" y="329" text-anchor="middle">真の位置との差を表示する</text>
+<text x="1075" y="289" text-anchor="middle" font-weight="bold">tf2_echo・RViz2（T5）</text>
+<text x="1075" y="309" text-anchor="middle">odom から base_link までの</text>
+<text x="1075" y="329" text-anchor="middle">TF を見る</text>
+<text x="385" y="67" text-anchor="middle" font-size="13">関節の状態・真の位置</text>
+<text x="845" y="67" text-anchor="middle" font-size="13">/joint_states</text>
+<text x="542" y="170" text-anchor="end" font-size="13">/ground_truth/odom</text>
+<text x="845" y="192" text-anchor="middle" font-size="13">/odom</text>
+<text x="1142" y="235" text-anchor="end" font-size="13">/tf（odom → base_footprint）</text>
+<rect x="20" y="267" width="20" height="14" rx="3" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<text x="48" y="280">このページで書くノード</text>
+<rect x="20" y="297" width="20" height="14" rx="3" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<text x="48" y="310">ROS 2 のノード・コマンド</text>
+<rect x="20" y="327" width="20" height="14" rx="3" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<text x="48" y="340">Gazebo（シミュレータ）</text>
+</g></svg>

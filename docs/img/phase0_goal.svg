@@ -1,53 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1030 660" width="1030" height="660" font-family="'Noto Sans CJK JP','Noto Sans JP','Hiragino Sans','Yu Gothic',Meiryo,sans-serif" font-size="14" role="img" aria-label="この教材の完成形（フェーズ6）の構成。Gazebo（フェーズ1-2・4-1）が台車の物理とLiDARを計算し、ros_gz_bridge（フェーズ1-2・4-1）がGazeboとROS 2の間で値を中継する。Nav2（フェーズ6）が地図の上で経路を計画し、cmd_velを駆動のノード（フェーズ2）へ送る。駆動のノードは、cmd_velを舵の角度と後輪の速さの指令に直して、ros_gz_bridgeを通してGazeboへ送る。オドメトリのノード（フェーズ3）は、関節の状態から位置と向きを積算し、オドメトリをNav2へ、TF（odom→base_link）をSLAMへ渡す。SLAM・位置推定（フェーズ5・6-1）は、LiDARの値とオドメトリから地図を作り（フェーズ6では、地図の上の位置を推定し）、地図とTF（map→odom）をNav2へ渡す。駆動とオドメトリのノードは自作し、SLAM・位置推定とNav2は既存のパッケージを設定して使う。Gazeboが受け持つ部分は、実機では本物の台車とセンサに入れ替わる">
-<title>この教材の完成形（フェーズ6）の構成。Gazebo（フェーズ1-2・4-1）が台車の物理とLiDARを計算し、ros_gz_bridge（フェーズ1-2・4-1）がGazeboとROS 2の間で値を中継する。Nav2（フェーズ6）が地図の上で経路を計画し、cmd_velを駆動のノード（フェーズ2）へ送る。駆動のノードは、cmd_velを舵の角度と後輪の速さの指令に直して、ros_gz_bridgeを通してGazeboへ送る。オドメトリのノード（フェーズ3）は、関節の状態から位置と向きを積算し、オドメトリをNav2へ、TF（odom→base_link）をSLAMへ渡す。SLAM・位置推定（フェーズ5・6-1）は、LiDARの値とオドメトリから地図を作り（フェーズ6では、地図の上の位置を推定し）、地図とTF（map→odom）をNav2へ渡す。駆動とオドメトリのノードは自作し、SLAM・位置推定とNav2は既存のパッケージを設定して使う。Gazeboが受け持つ部分は、実機では本物の台車とセンサに入れ替わる</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1090 660" width="1090" height="660" font-family="'Noto Sans CJK JP','Noto Sans JP','Hiragino Sans','Yu Gothic',Meiryo,sans-serif" font-size="14" role="img" aria-label="この教材の完成形（フェーズ6）の構成。Gazebo（フェーズ1-2・4-1）が台車の物理とLiDARを計算し、ros_gz_bridge（フェーズ1-2・4-1）がGazeboとROS 2の間で値を中継する。Nav2（フェーズ6）が地図の上で経路を計画し、cmd_velを駆動のノード（フェーズ2）へ送る。駆動のノードは、cmd_velを舵の角度と後輪の速さの指令に直して、ros_gz_bridgeを通してGazeboへ送る。オドメトリのノード（フェーズ3）は、関節の状態から位置と向きを積算し、オドメトリをNav2へ、TF（odom→base_footprint）をSLAMへ渡す。SLAM・位置推定（フェーズ5・6-1）は、LiDARの値とオドメトリから地図を作り（フェーズ6では、地図の上の位置を推定し）、地図とTF（map→odom）をNav2へ渡す。駆動とオドメトリのノードは自作し、SLAM・位置推定とNav2は既存のパッケージを設定して使う。Gazeboが受け持つ部分は、実機では本物の台車とセンサに入れ替わる">
+<title>この教材の完成形（フェーズ6）の構成。Gazebo（フェーズ1-2・4-1）が台車の物理とLiDARを計算し、ros_gz_bridge（フェーズ1-2・4-1）がGazeboとROS 2の間で値を中継する。Nav2（フェーズ6）が地図の上で経路を計画し、cmd_velを駆動のノード（フェーズ2）へ送る。駆動のノードは、cmd_velを舵の角度と後輪の速さの指令に直して、ros_gz_bridgeを通してGazeboへ送る。オドメトリのノード（フェーズ3）は、関節の状態から位置と向きを積算し、オドメトリをNav2へ、TF（odom→base_footprint）をSLAMへ渡す。SLAM・位置推定（フェーズ5・6-1）は、LiDARの値とオドメトリから地図を作り（フェーズ6では、地図の上の位置を推定し）、地図とTF（map→odom）をNav2へ渡す。駆動とオドメトリのノードは自作し、SLAM・位置推定とNav2は既存のパッケージを設定して使う。Gazeboが受け持つ部分は、実機では本物の台車とセンサに入れ替わる</title>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#333333"/></marker></defs>
-<rect x="0" y="0" width="1030" height="660" fill="#ffffff"/>
+<rect x="0" y="0" width="1090" height="660" fill="#ffffff"/>
 <g fill="#1a1a1a">
-<path d="M515,130 L515,190" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#s)"/>
-<path d="M135,360 L135,245 L400,245" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
-<path d="M515,300 L515,360" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
-<path d="M630,245 L895,245 L895,360" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
-<path d="M630,415 L780,415" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M545,130 L545,190" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#s)"/>
+<path d="M135,360 L135,245 L430,245" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M545,300 L545,360" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M660,245 L955,245 L955,360" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M660,415 L840,415" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
 <path d="M135,530 L135,470" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
-<path d="M515,470 L515,530" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
-<path d="M895,470 L895,530" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
-<rect x="400" y="20" width="230" height="110" rx="8" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
-<rect x="400" y="190" width="230" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<path d="M545,470 L545,530" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M955,470 L955,530" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="430" y="20" width="230" height="110" rx="8" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<rect x="430" y="190" width="230" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
 <rect x="20" y="360" width="230" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
-<rect x="400" y="360" width="230" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
-<rect x="780" y="360" width="230" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
-<rect x="20" y="530" width="990" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
-<text x="515" y="49" text-anchor="middle" font-weight="bold">Gazebo</text>
-<text x="515" y="69" text-anchor="middle">台車の物理と</text>
-<text x="515" y="89" text-anchor="middle">LiDARを計算する</text>
-<text x="515" y="111" text-anchor="middle" fill="#9a3412" font-weight="bold">フェーズ1-2・4-1</text>
-<text x="515" y="219" text-anchor="middle" font-weight="bold">ros_gz_bridge</text>
-<text x="515" y="239" text-anchor="middle">GazeboとROS 2の</text>
-<text x="515" y="259" text-anchor="middle">間で値を中継する</text>
-<text x="515" y="281" text-anchor="middle" fill="#9a3412" font-weight="bold">フェーズ1-2・4-1</text>
+<rect x="430" y="360" width="230" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<rect x="840" y="360" width="230" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<rect x="20" y="530" width="1050" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<text x="545" y="49" text-anchor="middle" font-weight="bold">Gazebo</text>
+<text x="545" y="69" text-anchor="middle">台車の物理と</text>
+<text x="545" y="89" text-anchor="middle">LiDARを計算する</text>
+<text x="545" y="111" text-anchor="middle" fill="#9a3412" font-weight="bold">フェーズ1-2・4-1</text>
+<text x="545" y="219" text-anchor="middle" font-weight="bold">ros_gz_bridge</text>
+<text x="545" y="239" text-anchor="middle">GazeboとROS 2の</text>
+<text x="545" y="259" text-anchor="middle">間で値を中継する</text>
+<text x="545" y="281" text-anchor="middle" fill="#9a3412" font-weight="bold">フェーズ1-2・4-1</text>
 <text x="135" y="389" text-anchor="middle" font-weight="bold">駆動のノード</text>
 <text x="135" y="409" text-anchor="middle">cmd_velを舵の角度と</text>
 <text x="135" y="429" text-anchor="middle">後輪の速さに直す</text>
 <text x="135" y="451" text-anchor="middle" fill="#9a3412" font-weight="bold">フェーズ2</text>
-<text x="515" y="389" text-anchor="middle" font-weight="bold">オドメトリのノード</text>
-<text x="515" y="409" text-anchor="middle">関節の状態から</text>
-<text x="515" y="429" text-anchor="middle">位置と向きを積算する</text>
-<text x="515" y="451" text-anchor="middle" fill="#9a3412" font-weight="bold">フェーズ3</text>
-<text x="895" y="389" text-anchor="middle" font-weight="bold">SLAM・位置推定</text>
-<text x="895" y="409" text-anchor="middle">LiDARの値から地図を</text>
-<text x="895" y="429" text-anchor="middle">作り、自己位置を直す</text>
-<text x="895" y="451" text-anchor="middle" fill="#9a3412" font-weight="bold">フェーズ5・6-1</text>
-<text x="515" y="569" text-anchor="middle" font-weight="bold">Nav2</text>
-<text x="515" y="589" text-anchor="middle">地図の上で経路を計画し、cmd_velを出して追従する</text>
-<text x="515" y="611" text-anchor="middle" fill="#9a3412" font-weight="bold">フェーズ6</text>
-<text x="523" y="165" text-anchor="start" font-size="13">Gazeboのトピック</text>
-<text x="267.5" y="237" text-anchor="middle" font-size="13">舵と後輪の指令</text>
-<text x="523" y="335" text-anchor="start" font-size="13">関節の状態</text>
-<text x="762.5" y="237" text-anchor="middle" font-size="13">LiDARの値</text>
-<text x="705" y="407" text-anchor="middle" font-size="13">odom→base_link</text>
+<text x="545" y="389" text-anchor="middle" font-weight="bold">オドメトリのノード</text>
+<text x="545" y="409" text-anchor="middle">関節の状態から</text>
+<text x="545" y="429" text-anchor="middle">位置と向きを積算する</text>
+<text x="545" y="451" text-anchor="middle" fill="#9a3412" font-weight="bold">フェーズ3</text>
+<text x="955" y="389" text-anchor="middle" font-weight="bold">SLAM・位置推定</text>
+<text x="955" y="409" text-anchor="middle">LiDARの値から地図を</text>
+<text x="955" y="429" text-anchor="middle">作り、自己位置を直す</text>
+<text x="955" y="451" text-anchor="middle" fill="#9a3412" font-weight="bold">フェーズ5・6-1</text>
+<text x="545" y="569" text-anchor="middle" font-weight="bold">Nav2</text>
+<text x="545" y="589" text-anchor="middle">地図の上で経路を計画し、cmd_velを出して追従する</text>
+<text x="545" y="611" text-anchor="middle" fill="#9a3412" font-weight="bold">フェーズ6</text>
+<text x="553" y="165" text-anchor="start" font-size="13">Gazeboのトピック</text>
+<text x="282.5" y="237" text-anchor="middle" font-size="13">舵と後輪の指令</text>
+<text x="553" y="335" text-anchor="start" font-size="13">関節の状態</text>
+<text x="807.5" y="237" text-anchor="middle" font-size="13">LiDARの値</text>
+<text x="750" y="407" text-anchor="middle" font-size="13">odom→base_footprint</text>
 <text x="143" y="505" text-anchor="start" font-size="13">cmd_vel</text>
-<text x="523" y="505" text-anchor="start" font-size="13">オドメトリ</text>
-<text x="903" y="505" text-anchor="start" font-size="13">地図・map→odom</text>
+<text x="553" y="505" text-anchor="start" font-size="13">オドメトリ</text>
+<text x="963" y="505" text-anchor="start" font-size="13">地図・map→odom</text>
 <rect x="20" y="32" width="20" height="14" rx="3" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
 <text x="48" y="45">自作するノード</text>
 <rect x="20" y="62" width="20" height="14" rx="3" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>

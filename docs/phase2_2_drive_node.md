@@ -621,7 +621,7 @@ ros2 topic pub -r 10 /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.2}, angula
 
 ## 次へ
 
-フェーズ3（自転車モデルのオドメトリと TF）で、関節の状態（`/joint_states` の後輪の回転の速さと舵の角度）から、台車の位置と向きを自分で積算するノードを書き、このページで中継した真の位置 `/ground_truth/odom` と比べる。手順書は作成中で、できたら README の「読む順番」に足す。
+[フェーズ3-1](phase3_1_odometry.md)（自転車モデルのオドメトリと TF）で、関節の状態（`/joint_states` の後輪の回転の速さと舵の角度）から、台車の位置と向きを自分で積算するノードを書き、このページで中継した真の位置 `/ground_truth/odom` と比べる。
 
 ## 出典
 
