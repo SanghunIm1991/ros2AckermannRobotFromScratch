@@ -15,7 +15,7 @@
 
 1. アッカーマン式の台車が、壁の手前で向きを変えるのに切り返しが要る理由と、後退と前進で舵を逆に切ると、どちらも同じ向きに向きが変わる理由を説明できる（2-1節・2-2節）。
 2. 直進・停止・後退・前進の切り返しの4つの状態と、移る条件を、ROS 2 を使わないクラスに書き、作り物の距離で確かめられる（2-3節・4節）。
-3. `LaserScan` の扇形の中の最短距離を求め、状態に応じた `cmd_vel` を送るノードを書ける（2-4節・5-1節）。
+3. [`sensor_msgs/msg/LaserScan`](https://github.com/ros2/common_interfaces/blob/jazzy/sensor_msgs/msg/LaserScan.msg) の扇形の中の最短距離を求め、状態に応じた `cmd_vel` を送るノードを書ける（2-4節・5-1節）。
 
 **完了条件**:
 
@@ -120,7 +120,7 @@ forward ──正面 < 0.5 m──> stop ──0.5秒──> reverse ──2.5�
   - 送る: `cmd_vel`（[`geometry_msgs/msg/Twist`](https://github.com/ros2/common_interfaces/blob/jazzy/geometry_msgs/msg/Twist.msg)）を0.1秒ごとに。状態が変わったら、ログに、前と後の状態と、正面・後ろの距離を出す。
   - パラメータ: `speed`（0.2）・`stop_distance`（0.5）・`clear_distance`（1.0）・`sector_deg`（扇形の幅の度。60.0）。
 - `clearance_meter`:
-  - 受ける: `/ground_truth/odom`（フェーズ2-2で中継した、台車の真の位置）。
+  - 受ける: `/ground_truth/odom`（[`nav_msgs/msg/Odometry`](https://github.com/ros2/common_interfaces/blob/jazzy/nav_msgs/msg/Odometry.msg)。フェーズ2-2で中継した、台車の真の位置）。
   - 台車を上から見た外形を、`base_footprint` から見て前へ 0.24 m（前輪の前の端）、後ろへ 0.04 m（後輪と本体の後ろの端）、左右へ 0.095 m（車輪の外側の 0.0925 m に、少し余裕を足した値）の長方形とし、その四隅と、部屋の壁の内側の面（フェーズ4-1の3-2節）の隙間の最小値を求める。2秒ごとに、今の隙間と、起動してからの最小の隙間を表示する。隙間が負なら、外形が壁にめり込んでいる（ぶつかった）ことを表す。
 
 ## 4. 判断のクラスを、ROS 2 を使わずに確かめる
