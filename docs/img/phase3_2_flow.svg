@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1310 550" width="1310" height="550" font-family="'Noto Sans CJK JP','Noto Sans JP','Hiragino Sans','Yu Gothic',Meiryo,sans-serif" font-size="14" role="img" aria-label="フェーズ3-2で動かすものと、トピックの流れ。T5 の ros2 topic pub が、速さと向きの速さの指令を、時刻付きでackermann_steering_controller へ送る。コントローラは T1 の Gazebo の中で動き、舵の角度と後輪の速さの指令を計算して、GazeboSimSystem を通して Gazebo の関節に書き、関節の状態を読む。コントローラは、関節の状態から積算したオドメトリを出し、T4 の odom_error_ctrl が、それを真の位置と比べる。joint_state_broadcaster は、関節の状態を /joint_states に送り、T2 の ackermann_odometry（フェーズ3-1の自作のオドメトリ）が、それから位置と向きを積算して /odom を出す。T3 の odom_error が、/odom を真の位置と比べる。真の位置（/ground_truth/odom）は、T1 の ros_gz_bridge が Gazebo から中継する">
+<title>フェーズ3-2で動かすものと、トピックの流れ。T5 の ros2 topic pub が、速さと向きの速さの指令を、時刻付きでackermann_steering_controller へ送る。コントローラは T1 の Gazebo の中で動き、舵の角度と後輪の速さの指令を計算して、GazeboSimSystem を通して Gazebo の関節に書き、関節の状態を読む。コントローラは、関節の状態から積算したオドメトリを出し、T4 の odom_error_ctrl が、それを真の位置と比べる。joint_state_broadcaster は、関節の状態を /joint_states に送り、T2 の ackermann_odometry（フェーズ3-1の自作のオドメトリ）が、それから位置と向きを積算して /odom を出す。T3 の odom_error が、/odom を真の位置と比べる。真の位置（/ground_truth/odom）は、T1 の ros_gz_bridge が Gazebo から中継する</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#333333"/></marker></defs>
+<rect x="0" y="0" width="1310" height="550" fill="#ffffff"/>
+<g fill="#1a1a1a">
+<path d="M310,75 L510,75" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M800,75 L1000,75" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M655,130 L655,220" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#s)"/>
+<path d="M510,275 L310,275" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M800,275 L1000,275" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M1145,220 L1145,130" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M1145,330 L1145,475 L800,475" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M165,330 L165,420" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M310,475 L510,475" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="20" width="290" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<rect x="510" y="20" width="290" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<rect x="1000" y="20" width="290" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<rect x="20" y="220" width="290" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<rect x="510" y="220" width="290" height="110" rx="8" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<rect x="1000" y="220" width="290" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<rect x="20" y="420" width="290" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<rect x="510" y="420" width="290" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<text x="165" y="59" text-anchor="middle" font-weight="bold">ros2 topic pub（T5）</text>
+<text x="165" y="79" text-anchor="middle">速さ v と向きの速さ ω を</text>
+<text x="165" y="99" text-anchor="middle">時刻付きで送る</text>
+<text x="655" y="59" text-anchor="middle" font-weight="bold">ackermann_steering_controller</text>
+<text x="655" y="79" text-anchor="middle">舵と後輪の指令を計算し、</text>
+<text x="655" y="99" text-anchor="middle">オドメトリを出す（T1）</text>
+<text x="1145" y="59" text-anchor="middle" font-weight="bold">odom_error_ctrl（T4）</text>
+<text x="1145" y="79" text-anchor="middle">コントローラのオドメトリと</text>
+<text x="1145" y="99" text-anchor="middle">真の位置の差を表示する</text>
+<text x="165" y="269" text-anchor="middle" font-weight="bold">joint_state_broadcaster</text>
+<text x="165" y="289" text-anchor="middle">関節の状態を送る（T1）</text>
+<text x="655" y="259" text-anchor="middle" font-weight="bold">Gazebo（T1）</text>
+<text x="655" y="279" text-anchor="middle">GazeboSimSystem が関節に</text>
+<text x="655" y="299" text-anchor="middle">指令を書き、状態を読む</text>
+<text x="1145" y="259" text-anchor="middle" font-weight="bold">ros_gz_bridge（T1）</text>
+<text x="1145" y="279" text-anchor="middle">真の位置を</text>
+<text x="1145" y="299" text-anchor="middle">ROS 2 へ中継する</text>
+<text x="165" y="459" text-anchor="middle" font-weight="bold">ackermann_odometry（T2）</text>
+<text x="165" y="479" text-anchor="middle">関節の状態から</text>
+<text x="165" y="499" text-anchor="middle">位置と向きを積算する</text>
+<text x="655" y="459" text-anchor="middle" font-weight="bold">odom_error（T3）</text>
+<text x="655" y="479" text-anchor="middle">自作のオドメトリと</text>
+<text x="655" y="499" text-anchor="middle">真の位置の差を表示する</text>
+<text x="410" y="67" text-anchor="middle" font-size="13">速度の指令（reference）</text>
+<text x="900" y="67" text-anchor="middle" font-size="13">オドメトリ（odometry）</text>
+<text x="665" y="180" text-anchor="start" font-size="13">指令・状態</text>
+<text x="410" y="267" text-anchor="middle" font-size="13">関節の状態</text>
+<text x="900" y="267" text-anchor="middle" font-size="13">真の位置</text>
+<text x="1155" y="180" text-anchor="start" font-size="13">/ground_truth/odom</text>
+<text x="972.5" y="467" text-anchor="middle" font-size="13">/ground_truth/odom</text>
+<text x="175" y="380" text-anchor="start" font-size="13">/joint_states</text>
+<text x="410" y="467" text-anchor="middle" font-size="13">/odom</text>
+<rect x="1020" y="484.0" width="20" height="14" rx="3" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<text x="1048" y="497.0">自作のノード（フェーズ3-1）</text>
+<rect x="1020" y="512.0" width="20" height="14" rx="3" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<text x="1048" y="525.0">ROS 2 のノード・コマンド</text>
+<rect x="1020" y="540.0" width="20" height="14" rx="3" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<text x="1048" y="553.0">Gazebo（シミュレータ）</text>
+</g></svg>

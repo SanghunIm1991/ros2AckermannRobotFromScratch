@@ -61,9 +61,9 @@
 
 ### フェーズ3: 自転車モデルのオドメトリと TF
 
-- **内容**: 後輪の回転の速さと舵の角度（関節の状態）から、自転車モデルで台車の位置と向きを積算するノードを書き、`nav_msgs/Odometry` と `odom → base_footprint` の TF を出す（3-1。TF の子のフレームは、模型の根元の `base_footprint` にした。2026-11-14）。積算の誤差がどう溜まるかを、Gazebo の真の位置と比べて見る。任意の3-2（別の手順書に分けた。2026-11-14）で、同じ台車を ros2_control（`gz_ros2_control` と `ackermann_steering_controller`）で動かし、標準のコントローラが出すオドメトリと自作のものを比べる（実機に移す発展の章の土台になる）。
+- **内容**: 後輪の回転の速さと舵の角度（関節の状態）から、自転車モデルで台車の位置と向きを積算するノードを書き、`nav_msgs/Odometry` と `odom → base_footprint` の TF を出す（3-1。TF の子のフレームは、模型の根元の `base_footprint` にした。2026-11-14）。積算の誤差がどう溜まるかを、Gazebo の真の位置と比べて見る。任意の3-2（別の手順書に分けた。2026-11-14）で、同じ台車を ros2_control（`gz_ros2_control` と `ackermann_steering_controller`）で動かし、標準のコントローラが出すオドメトリと自作のものを比べる（実機に移す発展の章の土台になる）。3-2では、模型に xacro の引数 `use_ros2_control`（既定は `false`）を足し、ros2_control で動かすときは、別の launch のファイル `sim_control.launch.py` で起動する形にした（フェーズ4以降は、これまでどおり `sim.launch.py` を使う。2026-11-14）。
 - **前提**: フェーズ2。
-- **完了条件（案）**: 円を1周させたとき、オドメトリの位置と Gazebo の真の位置の差が、走った距離の5%以内に収まる。RViz2 の固定フレームを `odom` にして、台車の動きが表示される（3-1の手順書を作るときに、RViz2 の表示は任意の確かめにし、`tf2_echo odom base_link` で `odom` から `base_link` までの TF が出ることと、ROS 2 を使わないクラスで、積算の位置と円の式の位置の差が 1e-5 m より小さいことを、完了条件にした。2026-11-14）。
+- **完了条件（案）**: 円を1周させたとき、オドメトリの位置と Gazebo の真の位置の差が、走った距離の5%以内に収まる。RViz2 の固定フレームを `odom` にして、台車の動きが表示される（3-1の手順書を作るときに、RViz2 の表示は任意の確かめにし、`tf2_echo odom base_link` で `odom` から `base_link` までの TF が出ることと、ROS 2 を使わないクラスで、積算の位置と円の式の位置の差が 1e-5 m より小さいことを、完了条件にした。2026-11-14）。3-2は、コントローラが計算する舵の角度と後輪の速さがフェーズ2-1の値と小数点以下3桁で一致すること、コントローラのオドメトリと真の位置の差が走った距離の5%以内であること、2つのオドメトリの位置の差が 0.01 m より小さいことを、完了条件にした（2026-11-14）。
 
 ### フェーズ4: LiDAR
 
@@ -110,7 +110,7 @@
 | 環境構築 | `docs/setup_ros2_gazebo.md` | 未作成 |
 | 1-1・1-2 | [`docs/phase1_1_urdf.md`](phase1_1_urdf.md)・[`docs/phase1_2_gazebo.md`](phase1_2_gazebo.md) | 1-1は作成済み（2026-11-09）。1-2は作成済み（2026-11-11） |
 | 2-1・2-2 | [`docs/phase2_1_kinematics.md`](phase2_1_kinematics.md)・[`docs/phase2_2_drive_node.md`](phase2_2_drive_node.md) | 2-1は作成済み（2026-11-11）。2-2は作成済み（2026-11-14） |
-| 3-1・3-2 | [`docs/phase3_1_odometry.md`](phase3_1_odometry.md)・`docs/phase3_2_ros2_control.md` | 3-1は作成済み（2026-11-14）。3-2（任意）は未作成 |
+| 3-1・3-2 | [`docs/phase3_1_odometry.md`](phase3_1_odometry.md)・[`docs/phase3_2_ros2_control.md`](phase3_2_ros2_control.md) | 3-1・3-2（任意）とも作成済み（2026-11-14） |
 | 4-1〜4-3 | `docs/phase4_1_lidar.md`・`docs/phase4_2_avoid.md`・`docs/phase4_3_wall_follow.md` | 未作成 |
 | 5 | `docs/phase5_slam.md` | 未作成 |
 | 6-1・6-2 | `docs/phase6_1_nav2_setup.md`・`docs/phase6_2_navigate.md` | 未作成 |
