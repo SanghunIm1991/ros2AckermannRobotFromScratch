@@ -9,7 +9,7 @@
 
 > **このページの位置づけ**: 任意の手順書で、フェーズ4以降は、このページに依存しない。このページで足す設定は、xacro の引数 `use_ros2_control` を `true` にしたときだけ効く。引数の既定値は `false` なので、フェーズ1-2の `sim.launch.py` での起動と、フェーズ4以降の手順は、このページを進めた後も、そのまま使える。
 >
-> **期待する結果の出どころ**: 4節の `xacro`・`check_urdf`・`grep` の表示、5-4節の `colcon build`・`ros2 launch --show-args` の表示、6節の launch のログ・`ros2 topic list`・`ros2 topic echo`・`ros2 topic pub`・ノードのログの表示は、作成時に使い捨てのワークスペースで実際に実行して確かめたものである（Gazebo は、画面なしで起動した。launch の引数 `gz_args:='-r -s empty.sdf'`）。時刻・pid・秒数・パス・小さな桁の値（`1e-18` のような0に近い値）は、実行ごと・環境ごとに変わる。6-3節の誤差の値は、走らせた時間と PC の速さで少し変わる。8節のうち、`Timestamp in header is missing` の警告、`--use-sim-time` を付けずに送ったときに台車が止まらないこと、最初の `ros2 topic list` の一覧が欠けることは、作成時の実行で起きたものである。9節の付け替えも、作成時に、使い捨ての launch のファイルで確かめた。8節のほかの誤りのときの表示は、作成時には起こしておらず、ツールの振る舞いとソースのコードから想定した要旨である。
+> **期待する結果の出どころ**: 4節の `dpkg-query`・`xacro`・`check_urdf`・`grep` の表示、5-4節の `colcon build`・`ros2 launch --show-args` の表示、6節の launch のログ・`ros2 topic list`・`ros2 topic echo`・`ros2 topic pub`・ノードのログの表示は、作成時に使い捨てのワークスペースで実際に実行して確かめたものである（Gazebo は、画面なしで起動した。launch の引数 `gz_args:='-r -s empty.sdf'`）。時刻・pid・秒数・パス・小さな桁の値（`1e-18` のような0に近い値）は、実行ごと・環境ごとに変わる。6-3節の誤差の値は、走らせた時間と PC の速さで少し変わる。8節のうち、`Timestamp in header is missing` の警告、`--use-sim-time` を付けずに送ったときに台車が止まらないこと、最初の `ros2 topic list` の一覧が欠けることは、作成時の実行で起きたものである。9節の付け替えも、作成時に、使い捨ての launch のファイルで確かめた。8節のほかの誤りのときの表示は、作成時には起こしておらず、ツールの振る舞いとソースのコードから想定した要旨である。
 
 ## 0. 学習目標と完了条件
 
@@ -170,17 +170,17 @@ TF は、自作のオドメトリ（T2）に出させ、コントローラには
 ### 4-1. 使うパッケージを確かめる
 
 ```bash
-dpkg -l ros-jazzy-gz-ros2-control ros-jazzy-ros2-controllers | tail -2
+dpkg-query -W -f='${db:Status-Abbrev} ${Package} ${Version}\n' ros-jazzy-gz-ros2-control ros-jazzy-ros2-controllers
 ```
 
 **期待する結果**（版と日付は、導入した時期によって変わる）:
 
 ```text
-ii  ros-jazzy-gz-ros2-control  1.2.20-1noble.20261006.040504 amd64        Gazebo ros2_control package allows to control simulated robots using ros2_control framework.
-ii  ros-jazzy-ros2-controllers 4.42.1-1noble.20260924.191822 amd64        Metapackage for ros2_controllers related packages
+ii  ros-jazzy-gz-ros2-control 1.2.20-1noble.20261006.040504
+ii  ros-jazzy-ros2-controllers 4.42.1-1noble.20260924.191822
 ```
 
-2行とも先頭が `ii`（導入済み）なら、準備ができている。`ros-jazzy-gz-ros2-control` は Gazebo の中で ros2_control を動かすためのもの、`ros-jazzy-ros2-controllers` は、`ackermann_steering_controller` と `joint_state_broadcaster` を含むコントローラの集まりである（コントローラマネージャ等の ros2_control の本体も、一緒に入る）。入っていなければ、次のコマンドで導入する（`sudo` のパスワードを聞かれる）。
+`dpkg-query -W` は、導入したパッケージの情報を、`-f` で決めた形（ここでは、状態・名前・版）で1行ずつ表示する。2行とも先頭が `ii`（導入済み）なら、準備ができている。入っていないパッケージは、`no packages found matching` と表示される。`ros-jazzy-gz-ros2-control` は Gazebo の中で ros2_control を動かすためのもの、`ros-jazzy-ros2-controllers` は、`ackermann_steering_controller` と `joint_state_broadcaster` を含むコントローラの集まりである（コントローラマネージャ等の ros2_control の本体も、一緒に入る）。入っていなければ、次のコマンドで導入する（`sudo` のパスワードを聞かれる）。
 
 ```bash
 sudo apt install ros-jazzy-gz-ros2-control ros-jazzy-ros2-controllers
