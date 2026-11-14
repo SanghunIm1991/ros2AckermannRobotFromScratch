@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1230 360" width="1230" height="360" font-family="'Noto Sans CJK JP','Noto Sans JP','Hiragino Sans','Yu Gothic',Meiryo,sans-serif" font-size="14" role="img" aria-label="フェーズ2-2で動かすものと、トピックの流れ。T4 の ros2 topic pub が、前に進む速さと向きを変える速さを /cmd_vel に送る。T2 の ackermann_drive は、フェーズ2-1の運動学のクラスで、左右の舵の角度と左右の後輪の速さに直し、4つの指令（/front_left_steer_cmd 等）に送る。T1 の ros_gz_bridge が、4つの指令を Gazebo へ中継する。Gazebo の中の台車は、舵を切り、後輪を回して、円を描いて走る。Gazebo は、台車の真の位置と向きを /ground_truth/odom に出し、ros_gz_bridge が ROS 2 へ中継する。T3 の circle_meter は、真の位置を受け、向きが1周変わるごとに、描いた円の半径を表示する">
+<title>フェーズ2-2で動かすものと、トピックの流れ。T4 の ros2 topic pub が、前に進む速さと向きを変える速さを /cmd_vel に送る。T2 の ackermann_drive は、フェーズ2-1の運動学のクラスで、左右の舵の角度と左右の後輪の速さに直し、4つの指令（/front_left_steer_cmd 等）に送る。T1 の ros_gz_bridge が、4つの指令を Gazebo へ中継する。Gazebo の中の台車は、舵を切り、後輪を回して、円を描いて走る。Gazebo は、台車の真の位置と向きを /ground_truth/odom に出し、ros_gz_bridge が ROS 2 へ中継する。T3 の circle_meter は、真の位置を受け、向きが1周変わるごとに、描いた円の半径を表示する</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#333333"/></marker></defs>
+<rect x="0" y="0" width="1230" height="360" fill="#ffffff"/>
+<g fill="#1a1a1a">
+<path d="M290,75 L480,75" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M615,130 L615,230" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M750,265 L940,265" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M940,310 L750,310" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M480,310 L290,310" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="20" width="270" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<rect x="480" y="20" width="270" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<rect x="20" y="230" width="270" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<rect x="480" y="230" width="270" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<rect x="940" y="230" width="270" height="110" rx="8" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<text x="155" y="59" text-anchor="middle" font-weight="bold">ros2 topic pub（T4）</text>
+<text x="155" y="79" text-anchor="middle">前に進む速さと</text>
+<text x="155" y="99" text-anchor="middle">向きを変える速さを送る</text>
+<text x="615" y="59" text-anchor="middle" font-weight="bold">ackermann_drive（T2）</text>
+<text x="615" y="79" text-anchor="middle">運動学のクラスで</text>
+<text x="615" y="99" text-anchor="middle">4つの指令に直す</text>
+<text x="155" y="269" text-anchor="middle" font-weight="bold">circle_meter（T3）</text>
+<text x="155" y="289" text-anchor="middle">向きが1周するごとに</text>
+<text x="155" y="309" text-anchor="middle">円の半径を表示する</text>
+<text x="615" y="269" text-anchor="middle" font-weight="bold">ros_gz_bridge（T1）</text>
+<text x="615" y="289" text-anchor="middle">Gazebo と ROS 2 の間で</text>
+<text x="615" y="309" text-anchor="middle">トピックを中継する</text>
+<text x="1075" y="269" text-anchor="middle" font-weight="bold">Gazebo（T1）</text>
+<text x="1075" y="289" text-anchor="middle">台車が円を描いて走り、</text>
+<text x="1075" y="309" text-anchor="middle">真の位置を出す</text>
+<text x="385" y="67" text-anchor="middle" font-size="13">/cmd_vel</text>
+<text x="623" y="185" text-anchor="start" font-size="13">4つの指令（_cmd）</text>
+<text x="845" y="257" text-anchor="middle" font-size="13">4つの指令（_cmd）</text>
+<text x="845" y="330" text-anchor="middle" font-size="13">/ground_truth/odom</text>
+<text x="385" y="330" text-anchor="middle" font-size="13">/ground_truth/odom</text>
+<rect x="940" y="37" width="20" height="14" rx="3" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<text x="968" y="50">このページで書くノード</text>
+<rect x="940" y="67" width="20" height="14" rx="3" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<text x="968" y="80">ROS 2 のノード・コマンド</text>
+<rect x="940" y="97" width="20" height="14" rx="3" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<text x="968" y="110">Gazebo（シミュレータ）</text>
+</g></svg>

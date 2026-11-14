@@ -14,6 +14,7 @@
 | 2 | [フェーズ1-1](docs/phase1_1_urdf.md) | URDF で台車の形と関節を書き、RViz2 で見る | フェーズ0（環境構築の手順書は作成中。ROS 2 Jazzy が入っていればよい）。親プロジェクトの [フェーズ2](https://github.com/SanghunIm1991/ros2MinimalPhysicalAi/blob/main/docs/phase2_packages.md) の2-1・2-2・2-4・2-5節と [フェーズ4](https://github.com/SanghunIm1991/ros2MinimalPhysicalAi/blob/main/docs/phase4_launch.md) の4-1節 |
 | 3 | [フェーズ1-2](docs/phase1_2_gazebo.md) | 台車を Gazebo に出し、ROS 2 から舵と後輪の関節を動かす | フェーズ1-1（環境構築の手順書は作成中。Gazebo Harmonic と `ros-jazzy-ros-gz` が入っていればよい）。親プロジェクトの節はフェーズ1-1と同じ |
 | 4 | [フェーズ2-1](docs/phase2_1_kinematics.md) | `v`・`ω` から左右の舵の角度と後輪の速さを求めるクラスを書き、ROS 2 を使わずに確かめる | フェーズ0の2節、フェーズ1-2。親プロジェクトの [フェーズ2](https://github.com/SanghunIm1991/ros2MinimalPhysicalAi/blob/main/docs/phase2_packages.md) の2-1・2-2・2-4・2-5節 |
+| 5 | [フェーズ2-2](docs/phase2_2_drive_node.md) | `cmd_vel` を受けて関節に指令するノードを書き、Gazebo の台車を円を描いて走らせ、半径を測る | フェーズ2-1、フェーズ1-2（Gazebo の設定と中継の設定に足す）。親プロジェクトの [フェーズ3-1](https://github.com/SanghunIm1991/ros2MinimalPhysicalAi/blob/main/docs/phase3_1_pubsub.md) の2節・3節 |
 
 各手順書では、コマンドを実行する手順の直後に「期待する結果」として、表示の例と、その読み方を載せます。実行の環境を用意せずに、読み物として読むこともできます。表示の出どころ（実際に確かめた表示か、仕様から想定した表示か）は、各手順書の冒頭に書きます。時刻・版の数字・パスなど、環境や実行ごとに変わる部分は、その旨を書きます。
 
