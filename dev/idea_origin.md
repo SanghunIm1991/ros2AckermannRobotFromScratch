@@ -34,7 +34,7 @@ Gazebo の中のアッカーマン式の台車が、LiDAR で作った地図の�
 | 環境構築 | ROS 2 Jazzy と Gazebo Harmonic を用意する | `ros-jazzy-ros-gz` 等 |
 | 1 | URDF で台車（前の2輪で舵を切り、後の2輪で進む）を書き、RViz2 と Gazebo に出す | URDF・xacro、`robot_state_publisher`、Gazebo |
 | 2 | アッカーマンの運動学: `cmd_vel` の `v`・`ω` から、舵の角度 δ=atan(L·ω/v) と後輪の速さを求め、台車を動かす。最小の回転半径と、実現できない指令の扱い | 自作のノード、Gazebo の関節の制御のプラグイン、`ros_gz_bridge` |
-| 3 | 自転車モデルのオドメトリと TF: 後輪の速さと舵の角度から位置と向きを積算し、`odom → base_link` の TF を出す。任意の節で、ros2_control の標準のコントローラと比べる | 自作のノード、`tf2`、（任意）`ackermann_steering_controller` |
+| 3 | 自転車モデルのオドメトリと TF: 後輪の速さと舵の角度から位置と向きを積算し、`odom → base_link` の TF を出す（後に `odom → base_footprint` にした。QA 表 2026-11-14）。任意の節で、ros2_control の標準のコントローラと比べる | 自作のノード、`tf2`、（任意）`ackermann_steering_controller` |
 | 4 | LiDAR: 台車に LiDAR を載せ、障害物までの距離を使って、止まる・避ける（切り返しを含む）・壁に沿って追従する | Gazebo の LiDAR、`ros_gz_bridge`、自作のノード |
 | 5 | SLAM: 走らせながら地図を作り、保存する | `slam_toolbox`（候補） |
 | 6 | Nav2: 作った地図の上で、目的地まで自律で移動する（ゴール） | Nav2（Smac Hybrid-A\*、Regulated Pure Pursuit 等。候補） |
