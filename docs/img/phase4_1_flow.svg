@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1230 350" width="1230" height="350" font-family="'Noto Sans CJK JP','Noto Sans JP','Hiragino Sans','Yu Gothic',Meiryo,sans-serif" font-size="14" role="img" aria-label="フェーズ4-1で動かすものと、トピックの流れ。T1 の Gazebo は、部屋のワールドの中で、台車に載せた LiDAR の距離を、描画の仕組みで1秒に10回計算する。T1 の ros_gz_bridge が、それを /scan（LaserScan）として ROS 2 へ中継する。T2 の scan_reader（このページで書くノード）は、/scan から正面・左・後ろ・右の距離と、一番近い物を表示する。T1 の robot_state_publisher は、模型から、base_footprint から lidar_link までの TF を /tf_static で配る。T3 の ros2 topic と tf2_echo、T4 の RViz2（任意）は、/scan と TF を見る">
+<title>フェーズ4-1で動かすものと、トピックの流れ。T1 の Gazebo は、部屋のワールドの中で、台車に載せた LiDAR の距離を、描画の仕組みで1秒に10回計算する。T1 の ros_gz_bridge が、それを /scan（LaserScan）として ROS 2 へ中継する。T2 の scan_reader（このページで書くノード）は、/scan から正面・左・後ろ・右の距離と、一番近い物を表示する。T1 の robot_state_publisher は、模型から、base_footprint から lidar_link までの TF を /tf_static で配る。T3 の ros2 topic と tf2_echo、T4 の RViz2（任意）は、/scan と TF を見る</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#333333"/></marker></defs>
+<rect x="0" y="0" width="1230" height="350" fill="#ffffff"/>
+<g fill="#1a1a1a">
+<path d="M290,75 L480,75" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M750,75 L940,75" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M710,130 L710,175 L1000,175 L1000,220" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<path d="M750,275 L940,275" fill="none" stroke="#333333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="20" y="20" width="270" height="110" rx="8" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<rect x="480" y="20" width="270" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<rect x="940" y="20" width="270" height="110" rx="8" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<rect x="480" y="220" width="270" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<rect x="940" y="220" width="270" height="110" rx="8" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<text x="155" y="59" text-anchor="middle" font-weight="bold">Gazebo（T1）</text>
+<text x="155" y="79" text-anchor="middle">部屋の中で、LiDAR の</text>
+<text x="155" y="99" text-anchor="middle">距離を計算する</text>
+<text x="615" y="59" text-anchor="middle" font-weight="bold">ros_gz_bridge（T1）</text>
+<text x="615" y="79" text-anchor="middle">Gazebo と ROS 2 の間で</text>
+<text x="615" y="99" text-anchor="middle">トピックを中継する</text>
+<text x="1075" y="59" text-anchor="middle" font-weight="bold">scan_reader（T2）</text>
+<text x="1075" y="79" text-anchor="middle">4つの向きの距離と、</text>
+<text x="1075" y="99" text-anchor="middle">一番近い物を表示する</text>
+<text x="615" y="259" text-anchor="middle" font-weight="bold">robot_state_publisher（T1）</text>
+<text x="615" y="279" text-anchor="middle">模型から、LiDAR の</text>
+<text x="615" y="299" text-anchor="middle">取り付け位置の TF を配る</text>
+<text x="1075" y="259" text-anchor="middle" font-weight="bold">ros2 topic・tf2_echo（T3）</text>
+<text x="1075" y="279" text-anchor="middle">RViz2（T4）</text>
+<text x="1075" y="299" text-anchor="middle">/scan と TF を見る</text>
+<text x="385" y="67" text-anchor="middle" font-size="13">LiDAR の距離</text>
+<text x="845" y="67" text-anchor="middle" font-size="13">/scan</text>
+<text x="855" y="167" text-anchor="middle" font-size="13">/scan</text>
+<text x="845" y="267" text-anchor="middle" font-size="13">/tf_static</text>
+<rect x="40" y="237" width="20" height="14" rx="3" fill="#fff4e5" stroke="#c77d1a" stroke-width="1.5"/>
+<text x="68" y="250">このページで書くノード</text>
+<rect x="40" y="265" width="20" height="14" rx="3" fill="#f3eefa" stroke="#7a5aa6" stroke-width="1.5"/>
+<text x="68" y="278">ROS 2 のノード・コマンド</text>
+<rect x="40" y="293" width="20" height="14" rx="3" fill="#eef7ee" stroke="#3a8a3a" stroke-width="1.5"/>
+<text x="68" y="306">Gazebo（シミュレータ）</text>
+</g></svg>

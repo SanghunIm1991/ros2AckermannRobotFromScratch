@@ -685,7 +685,7 @@ rviz2 --ros-args -p use_sim_time:=true
 
 ## 次へ
 
-[フェーズ3-2](phase3_2_ros2_control.md)（任意）で、同じ台車を ros2_control の標準のコントローラ（`ackermann_steering_controller`）で動かし、このページの自作のオドメトリと比べる。必須の流れは、フェーズ4-1（LiDAR を台車に載せる）へ進む。手順書は作成中で、できたら README の「読む順番」に足す。
+[フェーズ3-2](phase3_2_ros2_control.md)（任意）で、同じ台車を ros2_control の標準のコントローラ（`ackermann_steering_controller`）で動かし、このページの自作のオドメトリと比べる。必須の流れは、[フェーズ4-1](phase4_1_lidar.md)（LiDAR を台車に載せる）へ進む。
 
 ## 出典
 
